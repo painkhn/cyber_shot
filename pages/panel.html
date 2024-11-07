@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/output.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body class="bg-[#E5E3DD]">
+    <header class="w-full bg-[#D0C0A5] py-9">
+        <div class="max-w-7xl w-full h-auto mx-auto my-0 flex items-center justify-between">
+            <div>
+                <a href="../index.html">
+                    <img src="../public/logo.png" alt="">
+                </a>
+            </div>
+            <nav>
+                <ul class="flex items-center gap-16">
+                    <li>
+                        <a href="#!" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Корзина</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Вход</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-24">
+        <h1 class="text-2xl max-w-80 h-20 border-b border-black flex items-center justify-center mx-auto my-0 mb-20">
+            Панель управления
+        </h1>
+        <div class="max-w-7xl w-full mx-auto my-0">
+            <div class="flex justify-between">
+                <div class="w-80 border border-black h-[600px] flex items-center">
+                    <div class="h-[400px] mx-auto my-0 flex flex-col gap-20">
+                        <h2 class="text-center text-2xl">
+                            Добавить товар
+                        </h2>
+                        <form class="w-48 flex flex-col mx-auto my-0 h-full">
+                            <input type="text" placeholder="Название товара" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                            <input type="text" placeholder="Характеристики" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                            <label class="flex items-center mb-10 justify-center bg-transparent py-1 border-b border-black text-center text-xl cursor-pointer outline-none text-[#C8C8C8]">
+                                Фото товара
+                                <input type="file" class="hidden" />
+                            </label> 
+                            <div class="flex-1"></div>
+                            <button type="submit" class="py-3 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                Добавить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="w-80 border border-black h-[600px] flex items-center">
+                    <div class="h-[400px] mx-auto my-0 flex flex-col gap-20">
+                        <h2 class="text-center text-2xl">
+                            Редактировать товар
+                        </h2>
+                        <form class="flex flex-col w-48 mx-auto my-0 h-full">
+                            <input type="text" placeholder="Название товара" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                            <input type="text" placeholder="Характеристики" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                            <label class="flex items-center justify-center mb-10 bg-transparent py-1 border-b border-black text-center text-xl cursor-pointer outline-none text-[#C8C8C8]">
+                                Фото товара
+                                <input type="file" class="hidden" />
+                            </label> 
+                            <div class="flex-1"></div>
+                            <button type="submit" class="py-3 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                Применить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="w-80 border border-black h-[600px] flex items-center">
+                    <div class="h-[400px] mx-auto my-0 flex flex-col gap-20">
+                        <h2 class="text-center text-2xl">
+                            Удалить товар
+                        </h2>
+                        <form class="flex flex-col w-48 mx-auto my-0 h-full">
+                            <input type="text" placeholder="Артикул" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                            <p class="text-center">
+                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
+                            </p>
+                            <div class="flex-1"></div>
+                            <button type="submit" class="py-3 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                Удалить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-[#D0C0A5] py-8">
+        <div class="max-w-7xl w-full h-auto mx-auto my-0">
+            <p class="text-right">
+                Тел: 8-999-525-50-75
+                <br>
+                Адрес: г. Иркутск ул. Ленина д. 5а
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
