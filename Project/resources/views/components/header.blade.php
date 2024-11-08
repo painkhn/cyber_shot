@@ -7,18 +7,27 @@
         </div>
         <nav>
             <ul class="flex items-center gap-16">
+                @if (Auth::user() && Auth::user()->is_admin == 1)
+                    <li>
+                        <a href="{{ route('admin.index') }}"
+                            class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Админка</a>
+                    </li>
+                @endif
                 <li>
-                    <a href="#!" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Корзина</a>
+                    <a href="#!"
+                        class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Корзина</a>
                 </li>
                 @auth
+                    <li>
+                        <a href="{{ route('profile.index') }}"
+                            class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Профиль</a>
                     </li>
-                <a href="{{ route('profile.index') }}" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Профиль</a>
-                </li>
                 @else
                     <li>
-                        <a href="{{ route('login') }}" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Вход</a>
+                        <a href="{{ route('login') }}"
+                            class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Вход</a>
                     <li>
-                @endauth
+                    @endauth
             </ul>
         </nav>
     </div>
