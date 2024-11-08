@@ -12,6 +12,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware(IsAdmin::class)->group(function () {
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/orders', [\App\Http\Controllers\OrderController::class, 'index'])->name('admin.orders');
+    Route::post('/admin/product', [\App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload');
 });
 
 require __DIR__.'/auth.php';

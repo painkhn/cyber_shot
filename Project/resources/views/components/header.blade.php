@@ -12,6 +12,10 @@
                         <a href="{{ route('admin.index') }}"
                             class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Админка</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.orders') }}"
+                            class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Заказы</a>
+                    </li>
                 @endif
                 <li>
                     <a href="#!"
