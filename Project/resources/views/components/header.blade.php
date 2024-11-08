@@ -12,8 +12,8 @@
                 </li>
                 @auth
                     </li>
-                        <a href="{{ route('profile.index') }}" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Профиль</a>
-                    </li>
+                <a href="{{ route('profile.index') }}" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Профиль</a>
+                </li>
                 @else
                     <li>
                         <a href="{{ route('login') }}" class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Вход</a>
