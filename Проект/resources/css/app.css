@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Jura", sans-serif;
+    width: 100%;
+}
+
+main {
+    min-height: calc(100vh - 106px);
+}
+
+input[type='file'] {
+    color: transparent;
+    /* Hides the text */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
