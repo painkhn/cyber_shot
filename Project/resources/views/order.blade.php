@@ -8,9 +8,13 @@
         <div class="flex justify-between gap-10">
             <div class="max-w-80 w-full">
                 <div class="p-16 border border-black w-full flex flex-col gap-12">
-                    <img src="../public/avatar.png" alt="" class="rounded-full">
+                    @if (Auth::user()->photo)
+                        <img src="{{ asset('/storage/' . Auth::user()->photo) }}" alt="" class="rounded-full">
+                    @else
+                        <img src="{{ asset('img/avatar.png') }}" alt="" class="rounded-full">
+                    @endif
                     <p class="text-center border-b border-black py-2 text-xl">
-                        Username
+                        {{ Auth::user()->name }}
                     </p>
                     <p class="text-center border-b border-black py-2 text-xl">
                         Всего покупок: 2
@@ -138,7 +142,92 @@
                         Панель управления
                     </a>
                 </div>
+
+                <div class="max-w-sm w-full rounded-lg p-4 md:p-6">
+
+                    <div class="flex justify-between items-start w-full">
+                        <div class="flex-col items-center">
+                            <div class="flex items-center mb-1">
+                                <h5 class="text-xl font-bold leading-none text-gray-900 me-1">Статистика заказов за все время</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Line Chart -->
+                    <div class="py-6" id="pie-chart"></div>
+                </div>
+
+
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+    <script>
+
+        const getChartOptions = () => {
+            return {
+                series: [30, 70],
+                colors: ["#AB2323", "#6BD356"],
+                chart: {
+                    height: 420,
+                    width: "100%",
+                    type: "pie",
+                },
+                stroke: {
+                    colors: ["white"],
+                    lineCap: "",
+                },
+                plotOptions: {
+                    pie: {
+                        labels: {
+                            show: true,
+                        },
+                        size: "100%",
+                        dataLabels: {
+                            offset: -25
+                        }
+                    },
+                },
+                labels: ["Отменено", "Продано"],
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        fontFamily: "Inter, sans-serif",
+                    },
+                },
+                legend: {
+                    position: "bottom",
+                    fontFamily: "Inter, sans-serif",
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function (value) {
+                            return value + "%"
+                        },
+                    },
+                },
+                xaxis: {
+                    labels: {
+                        formatter: function (value) {
+                            return value  + "%"
+                        },
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                },
+            }
+        }
+
+        if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+            const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+            chart.render();
+        }
+
+    </script>
 @endsection

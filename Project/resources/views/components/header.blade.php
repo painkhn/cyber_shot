@@ -18,7 +18,7 @@
                     </li>
                 @endif
                 <li>
-                    <a href="#!"
+                    <a href="{{ route('basket.index') }}"
                         class="text-2xl font-medium transition-all py-2 px-4 rounded-md hover:bg-transparent/5">Корзина</a>
                 </li>
                 @auth

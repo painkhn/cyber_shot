@@ -57,11 +57,20 @@
                     <h2 class="text-center text-2xl">
                         Удалить товар
                     </h2>
-                    <form class="flex flex-col w-48 mx-auto my-0 h-full">
-                        <input type="text" placeholder="Артикул" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
-                        <p class="text-center">
-                            Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                        </p>
+                    <form method="post" action="{{ route('product.destroy') }}" class="flex flex-col w-48 mx-auto my-0 h-full">
+                        @csrf
+                        @method('DELETE')
+                        <input type="text" name="article" placeholder="Артикул" class="mb-10 w-full h-10 border-b border-black text-center text-xl bg-transparent outline-none transition-all focus:bg-transparent/5 placeholder:text-[#C8C8C8]">
+                        @if(session('success'))
+                            <div class="text-green-500 mb-4 text-center">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if($errors->has('article'))
+                            <div class="text-red-500 mb-4 text-center">
+                                {{ $errors->first('article') }}
+                            </div>
+                        @endif
                         <div class="flex-1"></div>
                         <button type="submit" class="py-3 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
                             Удалить
