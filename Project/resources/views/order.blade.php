@@ -39,12 +39,23 @@
                                     </p>
                                 </div>
                                 <div class="flex items-center justify-end gap-5">
-                                    <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
-                                        Отменить
-                                    </button>
-                                    <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                                        Подтвердить
-                                    </button>
+                                    <form action="{{ route('order.update', [$order->id]) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="text" name="status" id="status" value="rejected" class="hidden">
+                                        <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
+                                            Отменить
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('order.update', [$order->id]) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="text" name="status" id="status" value="confirmed"
+                                            class="hidden">
+                                        <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                            Подтвердить
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -56,18 +67,6 @@
                     <a href="#!"
                         class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Отчет по продажам
-                    </a>
-                    <a href="#!"
-                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
-                        Изменить фото
-                    </a>
-                    <a href="#!"
-                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
-                        Изменить имя
-                    </a>
-                    <a href="#!"
-                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
-                        Панель управления
                     </a>
                 </div>
 
@@ -94,9 +93,16 @@
 
 
     <script>
+        const rejected = {{ $rejected }};
+        const confirmed = {{ $confirmed }};
+        const total = {{ $total }};
+
         const getChartOptions = () => {
             return {
-                series: [30, 70],
+                series: [
+                    total > 0 ? (rejected / total) * 100 : 0,
+                    total > 0 ? (confirmed / total) * 100 : 0
+                ],
                 colors: ["#AB2323", "#6BD356"],
                 chart: {
                     height: 420,

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Order;
 
 class ProfileController extends Controller
 {
@@ -17,6 +18,7 @@ class ProfileController extends Controller
     public function index(Request $request): View
     {
         return view('profile', [
+            'orders' => Order::with('product')->where('user_id', Auth::id())->get(),
             'user' => $request->user(),
         ]);
     }

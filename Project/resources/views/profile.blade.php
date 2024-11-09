@@ -46,128 +46,49 @@
             </div>
         </div>
         <div class="w-full h-auto">
-            <!-- <div class="w-3/4">
-
-                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
             <h2 class="text-2xl text-center mb-9">
                 История покупок
             </h2>
             <ul class="flex flex-col gap-8">
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex gap-4 items-center">
-                        <img src="{{ asset('img/product.png') }}" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
+                @foreach ($orders as $order)
+                    <li class="flex gap-5">
+                        <div class="w-full p-4 border border-black flex gap-4 items-center">
+                            <img src="{{ asset('/storage/' . $order->product->image) }}" alt="" class="w-44">
+                            <div>
+                                <h3 class="mb-5 text-xl">
+                                    {{ $order->product->name }}
+                                </h3>
+                                <div class="flex justify-between">
+                                    <p class="text-xl">
+                                        #{{ $order->product->article }}
+                                    </p>
+                                    <p class="text-xl">
+                                        {{ $order->product->price }} руб.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="px-8 w-1/3 flex items-center border-l border-black">
-                        <p class="text-2xl text-[#E98074]">
-                            Доставлен
-                        </p>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex gap-4 items-center">
-                        <img src="{{ asset('img/product.png') }}" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
+                        @if ($order->status == 'waiting')
+                            <div class="px-8 w-1/3 flex items-center border-l border-black">
+                                <p class="text-2xl text-[#8E8D89]">
+                                    Обрабатывается
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="px-8 w-1/3 flex items-center border-l border-black">
-                        <p class="text-2xl text-[#8E8D89]">
-                            Не доставлен
-                        </p>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex gap-4 items-center">
-                        <img src="{{ asset('img/product.png') }}" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
+                        @elseif ($order->status == 'confirmed')
+                            <div class="px-8 w-1/3 flex items-center border-l border-black">
+                                <p class="text-2xl text-[#E98074]">
+                                    Доставлен
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="px-8 w-1/3 flex items-center border-l border-black">
-                        <p class="text-2xl text-[#8E8D89]">
-                            Не доставлен
-                        </p>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex gap-4 items-center">
-                        <img src="{{ asset('img/product.png') }}" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
+                        @elseif ($order->status == 'rejected')
+                            <div class="px-8 w-1/3 flex items-center border-l border-black">
+                                <p class="text-2xl text-[#8E8D89]">
+                                    Не доставлен
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="px-8 w-1/3 flex items-center border-l border-black">
-                        <p class="text-2xl text-[#8E8D89]">
-                            Не доставлен
-                        </p>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex gap-4 items-center">
-                        <img src="{{ asset('img/product.png') }}" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-8 w-1/3 flex items-center border-l border-black">
-                        <p class="text-2xl text-[#8E8D89]">
-                            Не доставлен
-                        </p>
-                    </div>
-                </li>
+                        @endif
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>

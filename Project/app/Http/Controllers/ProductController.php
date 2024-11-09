@@ -14,6 +14,7 @@ class ProductController extends Controller
 
         return view('category', [
             'products' => $products,
+            'category' => $category
         ]);
     }
     /*
@@ -49,6 +50,38 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'category' => 'required|integer|min:1',
+            'name' => 'required|string|min:3',
+            'price' => 'required|integer|min:1',
+            'description' => 'required|string|min:3',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        // Обновляем поля товара
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category');
+
+        // Если загружено новое фото, обновляем путь к фото
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $timestamp = time();
+            $photoPath = $file->storeAs('service', $timestamp . '.' . $file->getClientOriginalExtension(), 'public');
+            $product->image = $photoPath;
+        }
+
+        // Сохраняем изменения
+        $product->save();
+
+        return redirect(route('admin.index'));
+    }
+
     public function destroy(Request $request)
     {
         $request->validate([
@@ -71,6 +104,34 @@ class ProductController extends Controller
         $product = Product::where('article', $article)->firstOrFail();
         return view('product', [
             'product' => $product,
+        ]);
+    }
+
+    public function edit($article)
+    {
+        $product = Product::where('article', $article)->first();
+        dd($product);
+
+        if (!$product) {
+            return redirect()->route('admin')->withErrors(['article' => 'Товар с таким артикулом не найден']);
+        }
+
+        return view('admin', ['product' => $product, 'categories' => Category::all()]);
+    }
+
+    public function search_update(Request $request) {
+        $article = $request->input('article');
+        if (strpos($article, '#') === 0) {
+            $article = substr($article, 1);
+        }
+        $product = Product::where('article', $article)->first();
+        if (!$product) {
+            return redirect()->back();
+        }
+        $categories = Category::all();
+        return view('updateProduct', [
+            'product' => $product,
+            'categories' => $categories
         ]);
     }
 }

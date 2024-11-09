@@ -9,8 +9,14 @@ use Auth;
 class OrderController extends Controller
 {
     public function index(){
+        $rejected = Order::where('status', 'rejected')->count();
+        $confirmed = Order::where('status', 'confirmed')->count();
+
         return view('order', [
-            'orders' => Order::with('product')->where('status', 'waiting')->get()
+            'orders' => Order::with('product')->where('status', 'waiting')->get(),
+            'rejected' => $rejected,
+            'confirmed' => $confirmed,
+            'total' => $rejected + $confirmed
         ]);
     }
 
@@ -23,5 +29,17 @@ class OrderController extends Controller
         ]);
 
         return redirect(route('index'))->with('message', "Заказ успешно принят");
+    }
+
+    public function update($id, Request $request) {
+        $order = Order::find($id);
+        if (!$order) {
+            return redirect()->back();
+        }
+
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->back();
     }
 }

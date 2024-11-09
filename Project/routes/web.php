@@ -7,6 +7,7 @@ use App\Http\Middleware\IsAdmin;
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 Route::get('/category/{category}', [\App\Http\Controllers\ProductController::class, 'index'])->name('category.index');
 Route::get('/product/{article}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+Route::post('/search/', [\App\Http\Controllers\MainController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
@@ -25,6 +26,9 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::get('/admin/orders', [\App\Http\Controllers\OrderController::class, 'index'])->name('admin.orders');
     Route::post('/admin/product', [\App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload');
     Route::delete('/admin/destroy', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
+    Route::post('/product/update/search', [\App\Http\Controllers\ProductController::class, 'search_update'])->name('product.update');
+    Route::patch('/product/update/{id}', [\App\Http\Controllers\ProductController::class, 'update'])->name('product.upgrade');
+    Route::patch('/order/update/{id}', [\App\Http\Controllers\OrderController::class, 'update'])->name('order.update');
 });
 
 require __DIR__.'/auth.php';

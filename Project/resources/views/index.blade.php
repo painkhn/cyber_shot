@@ -7,7 +7,8 @@
         </div>
     @endif
     <div class="max-w-4xl w-full h-auto mx-auto my-0 mb-[120px]">
-        <form class="flex gap-3 items-center mb-24">
+        <form class="flex gap-3 items-center mb-24" method="POST" action="{{ route('search') }}">
+            @csrf
             <input type="search" name="searchInput" id="searchInput"
                 class="h-14 border-2 px-4 font-medium text-lg bg-transparent transition-all focus:bg-transparent/5 border-black w-full outline-none">
             <button type="submit"

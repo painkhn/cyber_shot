@@ -49,7 +49,7 @@
                     @endif
                 @endforeach
             @else
-                <p>Корзина пуста</p>
+                <p class="text-center">Корзина пуста</p>
             @endif
         </ul>
 

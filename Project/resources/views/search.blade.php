@@ -3,7 +3,7 @@
 @section('content')
     <div class="max-w-7xl w-full mx-auto my-0">
         <h1 class="text-2xl max-w-80 h-20 border-b border-black flex items-center justify-center mx-auto my-0 mb-20">
-            {{ $category->name }}
+            Результаты поиска
         </h1>
         <ul class="flex flex-col gap-10">
             @foreach ($products as $product)
