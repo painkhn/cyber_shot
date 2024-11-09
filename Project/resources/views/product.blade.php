@@ -15,9 +15,15 @@
                     <button class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
                         Оплата по карте
                     </button>
-                    <button class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                        Оплата за наличные
-                    </button>
+                    <form action="{{ route('order.upload') }}" method="POST"
+                        class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                        @csrf
+                        <input type="text" name="id" id="id" class="hidden" value="{{ $product->id }}"
+                            required>
+                        <button class="">
+                            Оплата за наличные
+                        </button>
+                    </form>
                 </div>
             </div>
             <div>
@@ -25,7 +31,7 @@
                     #{{ $product->article }}
                 </p>
                 <p class="text-2xl mb-5">
-                   {{ $product->name }}
+                    {{ $product->name }}
                 </p>
                 <h3 class="text-2xl mb-5">
                     Характеристики:

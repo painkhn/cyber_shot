@@ -15,6 +15,12 @@
                 <p class="text-center border-b border-black py-2 text-xl">
                     Всего покупок: 2
                 </p>
+                <button type="submit" class="w-full bg-[#D0C0A5] py-5 text-2xl transition-all hover:bg-[#E98074]"
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Выйти</button>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
             <h2 class="text-2xl text-center">
                 Редактирование
@@ -42,7 +48,7 @@
         <div class="w-full h-auto">
             <!-- <div class="w-3/4">
 
-                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
             <h2 class="text-2xl text-center mb-9">
                 История покупок
             </h2>

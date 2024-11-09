@@ -22,123 +22,51 @@
                 </div>
             </div>
             <ul class="flex flex-col gap-8">
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex flex-col gap-4">
-                        <img src="../public/product.png" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between mb-5">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-end gap-5">
-                                <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
-                                    Отменить
-                                </button>
-                                <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                                    Подтвердить
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex flex-col gap-4">
-                        <img src="../public/product.png" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between mb-5">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-end gap-5">
-                                <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
-                                    Отменить
-                                </button>
-                                <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                                    Подтвердить
-                                </button>
+                @foreach ($orders as $order)
+                    <li class="flex gap-5">
+                        <div class="w-full p-4 border border-black flex flex-col gap-4">
+                            <img src="{{ $order->product->photo }}" alt="" class="w-44">
+                            <div>
+                                <h3 class="mb-5 text-xl">
+                                    {{ $order->product->name }}
+                                </h3>
+                                <div class="flex justify-between mb-5">
+                                    <p class="text-xl">
+                                        #{{ $order->product->article }}
+                                    </p>
+                                    <p class="text-xl">
+                                        {{ $order->product->price }} руб.
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-end gap-5">
+                                    <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
+                                        Отменить
+                                    </button>
+                                    <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                        Подтвердить
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex flex-col gap-4">
-                        <img src="../public/product.png" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between mb-5">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-end gap-5">
-                                <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
-                                    Отменить
-                                </button>
-                                <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                                    Подтвердить
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="flex gap-5">
-                    <div class="w-full p-4 border border-black flex flex-col gap-4">
-                        <img src="../public/product.png" alt="" class="w-44">
-                        <div>
-                            <h3 class="mb-5 text-xl">
-                                Видеокарта ASUS GeForce RTX 4080 ProArt OC edition [PROART-RTX4080-O16G]
-                            </h3>
-                            <div class="flex justify-between mb-5">
-                                <p class="text-xl">
-                                    #000000
-                                </p>
-                                <p class="text-xl">
-                                    165.999 руб.
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-end gap-5">
-                                <button class="py-2 px-6 text-xl bg-white transition-all hover:bg-black/10">
-                                    Отменить
-                                </button>
-                                <button class="py-2 px-6 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                                    Подтвердить
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
             <div class="max-w-80 w-full">
                 <div class="py-12 px-11 border border-black w-full flex flex-col gap-12">
-                    <a href="#!" class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
+                    <a href="#!"
+                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Отчет по продажам
                     </a>
-                    <a href="#!" class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
+                    <a href="#!"
+                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Изменить фото
                     </a>
-                    <a href="#!" class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
+                    <a href="#!"
+                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Изменить имя
                     </a>
-                    <a href="#!" class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
+                    <a href="#!"
+                        class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Панель управления
                     </a>
                 </div>
@@ -148,7 +76,8 @@
                     <div class="flex justify-between items-start w-full">
                         <div class="flex-col items-center">
                             <div class="flex items-center mb-1">
-                                <h5 class="text-xl font-bold leading-none text-gray-900 me-1">Статистика заказов за все время</h5>
+                                <h5 class="text-xl font-bold leading-none text-gray-900 me-1">Статистика заказов за все
+                                    время</h5>
                             </div>
                         </div>
                     </div>
@@ -165,7 +94,6 @@
 
 
     <script>
-
         const getChartOptions = () => {
             return {
                 series: [30, 70],
@@ -203,15 +131,15 @@
                 },
                 yaxis: {
                     labels: {
-                        formatter: function (value) {
+                        formatter: function(value) {
                             return value + "%"
                         },
                     },
                 },
                 xaxis: {
                     labels: {
-                        formatter: function (value) {
-                            return value  + "%"
+                        formatter: function(value) {
+                            return value + "%"
                         },
                     },
                     axisTicks: {
@@ -228,6 +156,5 @@
             const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
             chart.render();
         }
-
     </script>
 @endsection

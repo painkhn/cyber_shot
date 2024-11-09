@@ -38,4 +38,15 @@ class BasketController extends Controller
 
         return redirect(route('basket.index'));
     }
+
+    public function destroy(Request $request) {
+        $request->validate([
+            'product' => 'required'
+        ]);
+
+        $product = Basket::findOrFail($request->product);
+        $product->delete();
+
+        return redirect(route('basket.index'));
+    }
 }

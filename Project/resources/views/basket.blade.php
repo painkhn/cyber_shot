@@ -7,11 +7,12 @@
         </h1>
         <ul class="flex flex-col gap-10">
             @if ($basketItems && $basketItems->count() > 0)
-                @foreach($basketItems as $basketItem)
+                @foreach ($basketItems as $basketItem)
                     @if ($basketItem->product)
                         <li>
                             <div class="w-full p-4 border border-black flex gap-8">
-                                <img src="{{ asset('/storage/' . $basketItem->product->image) }}" alt="" class="w-64 flex-1">
+                                <img src="{{ asset('/storage/' . $basketItem->product->image) }}" alt=""
+                                    class="w-64 flex-1">
                                 <div class="flex flex-col justify-between py-10 gap-10">
                                     <div class="flex flex-col gap-3">
                                         <h3 class="text-2xl">
@@ -26,12 +27,20 @@
                                             #{{ $basketItem->product->article ?? 'N/A' }}
                                         </p>
                                         <div class="flex gap-5">
-                                            <a href="{{ route('product.show', ['article' => $basketItem->product->article ?? 'default']) }}" class="py-5 px-16 text-xl bg-[#D0C0A5] transition-all hover:bg-[#E98074]">
-                                                Подробнее
-                                            </a>
-                                            <button class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                                            <form action="{{ route('basket.destroy') }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="text" name="product" id="product" class="hidden"
+                                                    value="{{ $basketItem->id }}">
+                                                <button
+                                                    class="py-5 px-16 text-xl bg-[#D0C0A5] transition-all hover:bg-[#E98074]">
+                                                    Удалить
+                                                </button>
+                                            </form>
+                                            <a href="{{ route('product.show', ['article' => $basketItem->product->article ?? 'default']) }}"
+                                                class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
                                                 Купить
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
