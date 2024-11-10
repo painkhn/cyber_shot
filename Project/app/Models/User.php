@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
+
     protected $hidden = [
         'password',
         'remember_token',
