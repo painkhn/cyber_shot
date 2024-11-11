@@ -13,7 +13,7 @@
                     {{ $user->name }}
                 </p>
                 <p class="text-center border-b border-black py-2 text-xl">
-                    Всего покупок: 2
+                    Всего покупок: {{ $count }}
                 </p>
                 <button type="submit" class="w-full bg-[#D0C0A5] py-5 text-2xl transition-all hover:bg-[#E98074]"
                     onclick="event.preventDefault();

@@ -16,9 +16,6 @@
                     <p class="text-center border-b border-black py-2 text-xl">
                         {{ Auth::user()->name }}
                     </p>
-                    <p class="text-center border-b border-black py-2 text-xl">
-                        Всего покупок: 2
-                    </p>
                 </div>
             </div>
             <ul class="flex flex-col gap-8">
@@ -64,7 +61,7 @@
             </ul>
             <div class="max-w-80 w-full">
                 <div class="py-12 px-11 border border-black w-full flex flex-col gap-12">
-                    <a href="#!"
+                    <a href="{{ route('admin.exel') }}"
                         class="w-full py-5 text-center bg-[#D0C0A5] text-xl transition-all hover:bg-[#E98074]">
                         Отчет по продажам
                     </a>

@@ -18,6 +18,7 @@ class ProfileController extends Controller
     public function index(Request $request): View
     {
         return view('profile', [
+            'count' => Order::where('user_id', Auth::id())->where('status', 'confirmed')->count(),
             'orders' => Order::with('product')->where('user_id', Auth::id())->get(),
             'user' => $request->user(),
         ]);

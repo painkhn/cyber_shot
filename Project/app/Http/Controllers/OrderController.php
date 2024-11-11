@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
+use App\Models\{Order, Card};
 use Auth;
 
 class OrderController extends Controller
@@ -22,11 +22,26 @@ class OrderController extends Controller
 
     public function upload(Request $request) {
 
-        Order::create([
-            'user_id' => Auth::id(),
-            'product_id' => $request->id,
-            'status' => 'waiting'
-        ]);
+        if ($request->payment == 'cash') {
+            Order::create([
+                'user_id' => Auth::id(),
+                'product_id' => $request->id,
+                'payment_method' => $request->payment,
+                'status' => 'waiting'
+            ]);
+        } elseif ($request->payment == 'card') {
+            $card = Card::where('user_id', Auth::id())->first();
+            if ($card) {
+                Order::create([
+                    'user_id' => Auth::id(),
+                    'product_id' => $request->id,
+                    'payment_method' => $request->payment,
+                    'status' => 'waiting'
+                ]);
+            } else {
+                return view('card');
+            }
+        }
 
         return redirect(route('index'))->with('message', "Заказ успешно принят");
     }

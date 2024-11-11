@@ -18,10 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/basket/delete', [\App\Http\Controllers\BasketController::class, 'destroy'])->name('basket.destroy');
 
     Route::post('/order/add', [\App\Http\Controllers\OrderController::class, 'upload'])->name('order.upload');
+    Route::post('/card/add', [\App\Http\Controllers\CardController::class, 'upload'])->name('card.upload');
 });
 
 
 Route::middleware(IsAdmin::class)->group(function () {
+    Route::get('/admin/exel', [\App\Http\Controllers\AdminController::class, 'exel'])->name('admin.exel');
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/orders', [\App\Http\Controllers\OrderController::class, 'index'])->name('admin.orders');
     Route::post('/admin/product', [\App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload');

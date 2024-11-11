@@ -12,14 +12,22 @@
                     <p class="text-2xl">
                         {{ $product->price }} ₽
                     </p>
-                    <button class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                        Оплата по карте
-                    </button>
                     <form action="{{ route('order.upload') }}" method="POST"
                         class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
                         @csrf
                         <input type="text" name="id" id="id" class="hidden" value="{{ $product->id }}"
                             required>
+                        <input type="text" name="payment" id="payment" class="hidden" value="card" required>
+                        <button class="">
+                            Оплата по карте
+                        </button>
+                    </form>
+                    <form action="{{ route('order.upload') }}" method="POST"
+                        class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                        @csrf
+                        <input type="text" name="id" id="id" class="hidden" value="{{ $product->id }}"
+                            required>
+                        <input type="text" name="payment" id="payment" class="hidden" value="cash" required>
                         <button class="">
                             Оплата за наличные
                         </button>

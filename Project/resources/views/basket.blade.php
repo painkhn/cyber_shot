@@ -57,9 +57,19 @@
             <h3 class="text-2xl">
                 Общая цена: {{ $totalPrice }} руб.
             </h3>
-            <button class="py-5 px-24 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
-                Купить
-            </button>
+            {{-- <div class="flex">
+                <button class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                    Оплата по карте
+                </button>
+                <form action="{{ route('order.upload') }}" method="POST"
+                    class="py-5 px-16 text-xl bg-[#E98074] transition-all hover:bg-[#d67165]">
+                    @csrf
+                    <input type="text" name="id" id="id" class="hidden" value="{{ $product->id }}" required>
+                    <button class="">
+                        Оплата за наличные
+                    </button>
+                </form>
+            </div> --}}
         </div>
     </div>
 @endsection

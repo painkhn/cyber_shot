@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
+            $table->enum('payment_method', ['card', 'cash']);
             $table->enum('status', ['waiting', 'confirmed', 'rejected']);
             $table->timestamps();
 
