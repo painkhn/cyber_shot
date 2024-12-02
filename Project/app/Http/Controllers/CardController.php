@@ -8,6 +8,9 @@ use Auth;
 
 class CardController extends Controller
 {
+    /*
+    * Добавление карты
+    */
     public function upload(Request $request) {
         Card::create([
             'user_id' => Auth::id(),

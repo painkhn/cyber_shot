@@ -8,6 +8,9 @@ use App\Models\Product;
 
 class MainController extends Controller
 {
+    /*
+    * Открытие главной страницы
+    */
     public function index()
     {
         return view('index', [
@@ -15,6 +18,9 @@ class MainController extends Controller
         ]);
     }
 
+    /*
+    * Поиск по ключевому слову
+    */
     public function search(Request $request) {
         $request->validate([
             'searchInput' => 'required|nullable|string|max:255',

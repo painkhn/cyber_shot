@@ -14,6 +14,9 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class ReportExport implements FromCollection, WithHeadings, WithStyles
 {
+    /*
+    * Формирование отчета
+    */
     public function collection()
     {
         $data = [];
@@ -75,6 +78,9 @@ class ReportExport implements FromCollection, WithHeadings, WithStyles
         return [];
     }
 
+    /*
+    * Добавление стиоей
+    */
     public function styles(Worksheet $sheet)
     {
         $sheet->mergeCells('A1:C1');

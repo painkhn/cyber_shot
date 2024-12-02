@@ -14,6 +14,9 @@ class Card extends Model
         'cvv',
     ];
 
+    /*
+    * Связь с моделью User
+    */
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -9,6 +9,9 @@ use Auth;
 
 class BasketController extends Controller
 {
+    /*
+    * Открытие корзины
+    */
     public function index() {
         $basketItems = Basket::with('product')->where('user_id', Auth::id())->get();
 
@@ -23,6 +26,9 @@ class BasketController extends Controller
         ]);
     }
 
+    /*
+    * Загрузка товара в корзину
+    */
     public function upload(Request $request)
     {
         $request->validate([
@@ -39,6 +45,9 @@ class BasketController extends Controller
         return redirect(route('basket.index'));
     }
 
+    /*
+    * Удаление товара из корзины
+    */
     public function destroy(Request $request) {
         $request->validate([
             'product' => 'required'

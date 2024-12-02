@@ -7,8 +7,9 @@ use App\Http\Middleware\IsAdmin;
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 Route::get('/category/{category}', [\App\Http\Controllers\ProductController::class, 'index'])->name('category.index');
 Route::get('/product/{article}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-Route::post('/search/', [\App\Http\Controllers\MainController::class, 'search'])->name('search');
+Route::post('/search', [\App\Http\Controllers\MainController::class, 'search'])->name('search');
 
+# Мидлвар на зареганых пользователей
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -21,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/card/add', [\App\Http\Controllers\CardController::class, 'upload'])->name('card.upload');
 });
 
-
+# Мидлвар на админа
 Route::middleware(IsAdmin::class)->group(function () {
     Route::get('/admin/exel', [\App\Http\Controllers\AdminController::class, 'exel'])->name('admin.exel');
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');

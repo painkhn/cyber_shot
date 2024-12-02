@@ -8,6 +8,9 @@ use Auth;
 
 class OrderController extends Controller
 {
+    /*
+    * Открытие страницы заказа
+    */
     public function index(){
         $rejected = Order::where('status', 'rejected')->count();
         $confirmed = Order::where('status', 'confirmed')->count();
@@ -20,6 +23,9 @@ class OrderController extends Controller
         ]);
     }
 
+    /*
+    * Создание заказа
+    */
     public function upload(Request $request) {
 
         if ($request->payment == 'cash') {
@@ -46,6 +52,9 @@ class OrderController extends Controller
         return redirect(route('index'))->with('message', "Заказ успешно принят");
     }
 
+    /*
+    * Обновление заказа
+    */
     public function update($id, Request $request) {
         $order = Order::find($id);
         if (!$order) {

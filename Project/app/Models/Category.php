@@ -8,6 +8,9 @@ class Category extends Model
 {
     protected $fillable = ['name', 'link'];
 
+    /*
+    * Связь с моделью Product
+    */
     public function products()
     {
         return $this->hasMany(Product::class);

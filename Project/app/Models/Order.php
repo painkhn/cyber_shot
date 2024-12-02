@@ -13,11 +13,17 @@ class Order extends Model
         'payment_method'
     ];
 
+    /*
+    * Связь с моделью User
+    */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /*
+    * Связь с моделью Product
+    */
     public function product()
     {
         return $this->belongsTo(Product::class);

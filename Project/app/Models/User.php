@@ -19,16 +19,26 @@ class User extends Authenticatable
         'is_admin'
     ];
 
+    /*
+    * Связь с моделью Basket
+    */
     public function baskets()
     {
         return $this->hasMany(Basket::class);
     }
 
+    /*
+    * Связь с моделью Order
+    */
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
 
+
+    /*
+    * Связь с моделью Card
+    */
     public function cards()
     {
         return $this->hasMany(Card::class);

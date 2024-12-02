@@ -9,12 +9,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
+    /*
+    * Открытие админки
+    */
     public function index() {
         return view('admin', [
             'categories' => Category::all()
         ]);
     }
 
+    /*
+    * Скачивание отчета
+    */
     public function exel()
     {
         return Excel::download(new ReportExport, 'info.xlsx');

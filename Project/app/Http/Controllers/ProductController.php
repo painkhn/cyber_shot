@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /*
+    * Открытие страницы категорий
+    */
     public function index($category){
         $category = Category::where('link', $category)->firstOrFail();
         $products = Product::where('category_id', $category->id)->get();
@@ -17,6 +20,7 @@ class ProductController extends Controller
             'category' => $category
         ]);
     }
+
     /*
      * Добавление нового товара
      */
@@ -50,6 +54,9 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    /*
+    * Обновление товара
+    */
     public function update($id, Request $request)
     {
         $request->validate([
@@ -82,6 +89,9 @@ class ProductController extends Controller
         return redirect(route('admin.index'));
     }
 
+    /*
+    * Удаление товара
+    */
     public function destroy(Request $request)
     {
         $request->validate([
@@ -100,6 +110,9 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Продукт успешно удален');
     }
 
+    /*
+    * Поиск товара п оартиклу
+    */
     public function show($article){
         $product = Product::where('article', $article)->firstOrFail();
         return view('product', [
@@ -107,10 +120,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /*
+    * Открытие товара по артиклу
+    */
     public function edit($article)
     {
         $product = Product::where('article', $article)->first();
-        dd($product);
 
         if (!$product) {
             return redirect()->route('admin')->withErrors(['article' => 'Товар с таким артикулом не найден']);
@@ -119,6 +134,9 @@ class ProductController extends Controller
         return view('admin', ['product' => $product, 'categories' => Category::all()]);
     }
 
+    /*
+    * Обноление товара
+    */
     public function search_update(Request $request) {
         $article = $request->input('article');
         if (strpos($article, '#') === 0) {
